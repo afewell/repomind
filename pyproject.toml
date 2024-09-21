@@ -13,7 +13,7 @@ openai = "^1.47.0"
 networkx = "^3.3"
 matplotlib = "^3.9.2"
 jedi = "^0.19.1"
-numpy = "^2.1.1"
+numpy = "^1.21.0"
 scipy = "^1.14.1"
 filelock = "^3.16.1"
 
