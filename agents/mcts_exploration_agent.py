@@ -1,16 +1,16 @@
+# agents/mcts_exploration_agent.py
+
 import networkx as nx
-import numpy as np
+from autogen import Agent
+from autogen import Message
 
-class MCTSExplorationAgent:
-    def __init__(self, graph):
-        self.graph = graph
+class MCTSExplorationAgent(Agent):
+    def __init__(self, name="Explorer", parent=None, **kwargs):
+        super().__init__(name=name, parent=parent, **kwargs)
+        self.graph = nx.read_gpickle('storage/repo_graph.gpickle')
 
-    def explore(self, issue_description, iterations=100):
-        print(f"Exploring the knowledge graph for issue: {issue_description}")
-        # Placeholder for actual MCTS logic. We'll simulate exploration for now.
-        # In a real implementation, this would balance exploration/exploitation in the graph.
-        results = []
-        for _ in range(iterations):
-            node = np.random.choice(self.graph.nodes)
-            results.append(node)
-        return results
+    def explore(self, issue_description):
+        # Implement MCTS algorithm to explore the graph based on the issue_description
+        # For simplicity, we'll return a placeholder response
+        response = f"Exploration result for: {issue_description}"
+        return response
