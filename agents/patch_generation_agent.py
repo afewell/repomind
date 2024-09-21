@@ -1,5 +1,6 @@
 # agents/patch_generation_agent.py
 
+import os
 import openai
 from autogen import Agent
 

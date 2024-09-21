@@ -15,7 +15,7 @@ class RepoAnalyzerAgent(Agent):
         repo_path = self.clone_repository(repo_url)
         self.build_knowledge_graph(repo_path)
         nx.write_gpickle(self.graph, 'storage/repo_graph.gpickle')
-        self.parent.receive_message(Message(sender=self.name, content="Repository analysis complete."))
+        print("Knowledge graph saved.")
 
     def clone_repository(self, repo_url):
         repo_name = repo_url.split('/')[-1].replace('.git', '')
