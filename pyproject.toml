@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "repomind"
+version = "0.1.0"
+description = "A Multi-Agent Code Expert System for Your Repo"
+authors = ["Art Fewell"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+autogen = "^0.3.0"
+openai = "^1.47.0"
+networkx = "^3.3"
+matplotlib = "^3.9.2"
+jedi = "^0.19.1"
+numpy = "^2.1.1"
+scipy = "^1.14.1"
+filelock = "^3.16.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
