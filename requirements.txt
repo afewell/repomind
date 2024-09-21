@@ -1,0 +1,8 @@
+autogen
+openai
+networkx
+matplotlib
+jedi
+numpy
+scipy
+filelock
