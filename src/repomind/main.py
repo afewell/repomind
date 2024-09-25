@@ -1,14 +1,32 @@
-# main.py
+# src/repomind/main.py
 
 from agents.remi_agent import ReMiAgent
+from dotenv import load_dotenv
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Access your OpenAI API key
+openai_api_key = os.getenv("OPENAI_API_KEY")
+if not openai_api_key:
+    raise Exception("OpenAI API key not found. Please set it in the .env file.")
 
 def main():
-    remi = ReMiAgent()
-    
-    # Initialize ReMi
-    print("Initializing ReMi...")
-    remi.initialize_remi()
-    
+    # LLM configuration
+    llm_config = {
+        "config_list": [
+            {
+                "model": "gpt-4",
+                "api_key": openai_api_key
+            }
+        ],
+        "timeout": 120,
+        "cache_seed": None  # Disable caching for teachability
+    }
+
+    remi = ReMiAgent(config_list=llm_config["config_list"])
+
     try:
         while True:
             user_input = input("You: ")

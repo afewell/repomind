@@ -1,9 +1,14 @@
 # agents/mcts_exploration_agent.py
 
+import os
+import pickle
 import networkx as nx
 import random
 import math
 from autogen import Agent
+
+# Determine the base directory (project root)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class MCTSNode:
     def __init__(self, state, parent=None, action=None):
@@ -27,7 +32,11 @@ class MCTSNode:
 class MCTSExplorationAgent(Agent):
     def __init__(self, name="Explorer", parent=None, **kwargs):
         super().__init__(name=name, parent=parent, **kwargs)
-        self.graph = nx.read_gpickle('storage/repo_graph.gpickle')
+        graph_path = os.path.join(BASE_DIR, 'storage', 'repo_graph.gpickle')
+        if not os.path.exists(graph_path):
+            raise FileNotFoundError(f"Knowledge graph file '{graph_path}' not found. Please ensure the repository has been analyzed.")
+        with open(graph_path, 'rb') as f:
+            self.graph = pickle.load(f)
         self.max_iterations = 1000
         self.simulation_depth = 10
 
